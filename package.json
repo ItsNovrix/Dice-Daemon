@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "dice-daemon",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "license": "BSD-3-Clause",
   "type": "module",
   "scripts": {
@@ -11,6 +11,6 @@
     "@devvit/public-api": "0.12.24"
   },
   "devDependencies": {
-    "typescript": "5.3.2"
+    "typescript": "5.8.3"
   }
 }
