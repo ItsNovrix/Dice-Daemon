@@ -9,7 +9,7 @@ Devvit.configure({
 });
 
 // ==========================================================
-// 2. DICE DAEMON CORE LOGIC
+// 2. DICE ROLL CORE LOGIC
 // ==========================================================
 
 //Main trigger to catch roll requests in the sub

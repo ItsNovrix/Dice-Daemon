@@ -1,2 +1,4 @@
 name: dice-daemon
-version: 0.0.4
+version: 0.0.5
+marketingAssets:
+  icon: assets/app_icon.png
