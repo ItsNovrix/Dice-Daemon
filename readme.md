@@ -48,3 +48,4 @@ If you have any feedback/suggestions or need support, DM [u/ItsNovrix](https://w
 * v0.0.6: Added app profile icon.
 * v0.0.7: Manual file version bump due to Devvit CLI issue.
 * v0.0.8: Manual file version bump due to Devvit CLI issue.
+* v0.0.9: Updated app triggers to address trigger issues.

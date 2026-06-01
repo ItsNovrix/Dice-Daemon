@@ -1,7 +1,10 @@
 {
   "name": "dice-daemon",
   "blocks": {
-    "entry": "src/main.ts"
+    "entry": "src/main.ts",
+    "triggers": [
+      "onCommentCreate"
+    ]
   },
   "marketingAssets": {
     "icon": "assets/app_icon.png"
