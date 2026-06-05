@@ -50,3 +50,6 @@ If you have any feedback/suggestions or need support, DM [u/ItsNovrix](https://w
 * v0.0.8: Manual file version bump due to Devvit CLI issue.
 * v0.0.9: Updated app triggers to address trigger issues.
 * v0.0.10: Updated assets to address app icon issue.
+* v0.0.11: Removed old configuration files, began transitioning app to new architecture.
+* v0.0.12: Fixed issues with bot not responding to roll commands.
+* v0.0.13: Completed the full transition to new architecture and updated app icon.
