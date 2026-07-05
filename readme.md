@@ -54,3 +54,4 @@ If you have any feedback/suggestions or need support, DM [u/ItsNovrix](https://w
 * v0.0.12: Fixed issues with bot not responding to roll commands.
 * v0.0.13: Completed the full transition to new architecture and updated app icon.
 * v0.0.14: Updated app to latest Devvit version.
+* v0.0.15: Updated app to latest Devvit version.
