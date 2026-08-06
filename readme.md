@@ -34,7 +34,7 @@ This app was developed in compliance with [Reddit's Developer Terms](https://dev
 
 ## 🆘 Feedback & Support
 
-If you have any feedback/suggestions or need support, DM [u/ItsNovrix](https://www.reddit.com/u/ItsNovrix).
+If you have any feedback/suggestions or need support, visit [r/NovrixApps](https://www.reddit.com/r/NovrixApps).
 
 ---
 
@@ -57,3 +57,6 @@ If you have any feedback/suggestions or need support, DM [u/ItsNovrix](https://w
 * v0.0.15: Updated app to latest Devvit version.
 * v0.0.16: Updated app to latest Devvit version.
 * v0.0.17: Updated app to latest Devvit version.
+* v0.0.18: Updated support subreddit link.
+
+Thanks for using **Dice Daemon**!
