@@ -58,5 +58,6 @@ If you have any feedback/suggestions or need support, visit [r/NovrixApps](https
 * v0.0.16: Updated app to latest Devvit version.
 * v0.0.17: Updated app to latest Devvit version.
 * v0.0.18: Updated support subreddit link.
+* v0.0.19: Updated app to latest Devvit version.
 
 Thanks for using **Dice Daemon**!
