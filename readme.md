@@ -4,7 +4,7 @@ An automated dice-rolling bot for Reddit!
 
 ## 🛠️ How It Works
 
-Dice Daemon listens to the subreddit's comment stream in real-time. When a user calls the rolling command using standard tabletop RPG notation, Dicr Daemon calculates the random generation and replies instantly.
+Dice Daemon listens to the subreddit's comment stream in real-time. When a user calls the rolling command using standard tabletop RPG notation, Dice Daemon calculates the random generation and replies instantly with the results of the roll.
 
 ### Syntax
 `!roll [Number of Dice]d[Number of Sides]`
@@ -14,11 +14,18 @@ Dice Daemon listens to the subreddit's comment stream in real-time. When a user 
 * **Example:** `!roll 3d20` 
   * *Response:* Results: [ 18, 4, 12 ] | **Total: 34**
 
+### Roll Modifiers
+
+* **Addition/Subraction:** Add or subtract modifiers from dice totals (e.g., `!roll 3d20+5` or `!roll 3d20-2`).
+* **Keep Highest/Lowest:** Roll multiple dice and keep a specified number of the highest or lowest results (e.g., `!roll 10d20kh3` or `!roll 15d20kl2`).
+* **Exploding Dice:** Use `!` for one bonus roll when a die reaches its maximum, or `!!` for chained bonus rolls (e.g. `!roll 2d5!` or `!roll 3d6!!`).
+
 ## 🛡️ Built-In Protections
 
 To keep the subreddit clean and prevent performance crashes, the core logic includes standard safety rails:
 * **Dice Cap:** Maximum of 20 dice rolled per comment.
 * **Side Cap:** Maximum of 100 sides per die.
+* **Modifier Cap:** Modifiers capped at ±1,000,000, and bonus rolls at 100.
 * **Input Validation:** Automatically ignores negative numbers, zeroes, or non-numeric spam.
 
 ---
@@ -37,6 +44,10 @@ This app was developed in compliance with [Reddit's Developer Terms](https://dev
 If you have any feedback/suggestions or need support, visit [r/NovrixApps](https://www.reddit.com/r/NovrixApps).
 
 ---
+
+# 📋 App Development
+
+Track upcoming features, planned updates, and known issues for all my Devvit apps on the [Novrix Labs Trello Board](https://trello.com/b/1TdocvRg/novrix-labs).
 
 ## Changelog
 
@@ -60,5 +71,6 @@ If you have any feedback/suggestions or need support, visit [r/NovrixApps](https
 * v0.0.18: Updated support subreddit link.
 * v0.0.19: Updated app to latest Devvit version.
 * v0.0.20: Updated app to latest Devvit version.
+* v0.0.21: Updated app to latest Devvit version and added roll modifiers.
 
 Thanks for using **Dice Daemon**!
