@@ -16,9 +16,12 @@ Dice Daemon listens to the subreddit's comment stream in real-time. When a user 
 
 ### Roll Modifiers
 
-* **Addition/Subraction:** Add or subtract modifiers from dice totals (e.g., `!roll 3d20+5` or `!roll 3d20-2`).
-* **Keep Highest/Lowest:** Roll multiple dice and keep a specified number of the highest or lowest results (e.g., `!roll 10d20kh3` or `!roll 15d20kl2`).
-* **Exploding Dice:** Use `!` for one bonus roll when a die reaches its maximum, or `!!` for chained bonus rolls (e.g. `!roll 2d5!` or `!roll 3d6!!`).
+* **Addition/Subraction:** Add or subtract modifiers from dice totals.
+  * **Example:** `!roll 3d20+5` or `!roll 3d20-2`
+* **Keep Highest/Lowest:** Roll multiple dice and keep a specified number of the highest or lowest results.
+  * **Example:** `!roll 10d20kh3` or `!roll 15d20kl2`
+* **Exploding Dice:** Use `!` for one bonus roll when a die reaches its maximum, or `!!` for chained bonus rolls.
+  * **Example:** `!roll 2d5!` or `!roll 3d6!!`
 
 ## 🛡️ Built-In Protections
 
@@ -45,9 +48,11 @@ If you have any feedback/suggestions or need support, visit [r/NovrixApps](https
 
 ---
 
-# 📋 App Development
+## 📋 App Development
 
 Track upcoming features, planned updates, and known issues for all my Devvit apps on the [Novrix Labs Trello Board](https://trello.com/b/1TdocvRg/novrix-labs).
+
+---
 
 ## Changelog
 
@@ -72,5 +77,6 @@ Track upcoming features, planned updates, and known issues for all my Devvit app
 * v0.0.19: Updated app to latest Devvit version.
 * v0.0.20: Updated app to latest Devvit version.
 * v0.0.21: Updated app to latest Devvit version and added roll modifiers.
+* v0.0.22: Updated app to latest Devvit version.
 
 Thanks for using **Dice Daemon**!
