@@ -10,6 +10,7 @@ const MAX_DICE = 20;
 const MAX_SIDES = 100;
 const MAX_EXTRA_ROLLS = 100;
 const MAX_MODIFIER = 1_000_000;
+const MAX_MODIFIER_COUNT = 5;
 
 type RollMode =
   | 'normal'
@@ -23,7 +24,7 @@ interface RollCommand {
   count: number;
   sides: number;
   mode: RollMode;
-  modifier?: number;
+  modifiers?: number[];
   keepCount?: number;
 }
 
@@ -36,10 +37,8 @@ interface RollResult {
 }
 
 function parseRollCommand(body: string): RollCommand | null {
-  // Search for roll commands anywhere in the comment.
-  // Continue searching if a command is invalid.
   const rollRegex =
-    /(?:^|\s)!roll\s+(\d+)d(\d+)(?:(kh|kl)(\d+)|([+-])(\d+)|(!{1,2}))?(?=\s|$)/gi;
+    /(?:^|\s)!roll\s+(\d+)d(\d+)(?:(kh|kl)(\d+)|((?:\s*[+-]\s*\d+)+)|(!{1,2}))?(?=\s|$)/gi;
 
   let match: RegExpExecArray | null;
 
@@ -81,11 +80,34 @@ function parseRollCommand(body: string): RollCommand | null {
     }
 
     if (match[5]) {
-      const value = Number(match[6]);
+      const modifiers: number[] = [];
+      const modifierRegex = /([+-])\s*(\d+)/g;
+      let modifierMatch: RegExpExecArray | null;
+      let combinedModifier = 0;
+      let valid = true;
+
+      while ((modifierMatch = modifierRegex.exec(match[5])) !== null) {
+        const value = Number(modifierMatch[2]);
+
+        if (
+          !Number.isSafeInteger(value) ||
+          value > MAX_MODIFIER
+        ) {
+          valid = false;
+          break;
+        }
+
+        const modifier = modifierMatch[1] === '-' ? -value : value;
+
+        modifiers.push(modifier);
+        combinedModifier += modifier;
+      }
 
       if (
-        !Number.isSafeInteger(value) ||
-        value > MAX_MODIFIER
+        !valid ||
+        modifiers.length > MAX_MODIFIER_COUNT ||
+        !Number.isSafeInteger(combinedModifier) ||
+        Math.abs(combinedModifier) > MAX_MODIFIER
       ) {
         continue;
       }
@@ -94,15 +116,15 @@ function parseRollCommand(body: string): RollCommand | null {
         count,
         sides,
         mode: 'modifier',
-        modifier: match[5] === '-' ? -value : value,
+        modifiers,
       };
     }
 
-    if (match[7]) {
+    if (match[6]) {
       return {
         count,
         sides,
-        mode: match[7] === '!' ? 'explode-once' : 'explode-chain',
+        mode: match[6] === '!' ? 'explode-once' : 'explode-chain',
       };
     }
 
@@ -111,6 +133,7 @@ function parseRollCommand(body: string): RollCommand | null {
 
   return null;
 }
+
 
 function rollDie(sides: number): number {
   return Math.floor(Math.random() * sides) + 1;
@@ -130,7 +153,10 @@ function rollDice(command: RollCommand): RollResult {
     total = rolls.reduce((sum, roll) => sum + roll, 0);
 
     if (mode === 'modifier') {
-      total += command.modifier ?? 0;
+      total += (command.modifiers ?? []).reduce(
+        (sum, modifier) => sum + modifier,
+        0
+      );
     }
 
     return { rolls, total, safetyCapReached };
@@ -210,16 +236,27 @@ function formatRollResult(
   let details = '';
 
   if (command.mode === 'modifier') {
-    const modifier = command.modifier ?? 0;
-    const sign = modifier >= 0 ? '+' : '−';
+    const modifiers = command.modifiers ?? [];
+    const combinedModifier = modifiers.reduce(
+      (sum, modifier) => sum + modifier,
+      0
+    );
+
+    const formattedModifiers = modifiers.map((modifier) =>
+      `${modifier >= 0 ? '+' : '−'}${Math.abs(modifier)}`
+    ).join(' ');
+
+    const sign = combinedModifier >= 0 ? '+' : '−';
 
     details =
       `[ ${result.rolls.join(', ')} ]\n\n` +
-      `Modifier: ${sign}${Math.abs(modifier)}`;
+      `Modifiers: ${formattedModifiers}\n\n` +
+      `Combined modifier: ${sign}${Math.abs(combinedModifier)}`;
   } else if (
     command.mode === 'keep-highest' ||
     command.mode === 'keep-lowest'
   ) {
+
     const displayedRolls = result.rolls.map((roll, index) =>
       result.kept![index] ? `**${roll}**` : `~~${roll}~~`
     );
@@ -275,7 +312,7 @@ app.post('/internal/triggers/on-comment-create', async (c) => {
     );
 
     await reddit.submitComment({
-      id: comment.id,
+      id: comment.id as `t1_${string}`,
       text: replyMessage,
     });
 

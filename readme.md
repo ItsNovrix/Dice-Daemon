@@ -66,9 +66,9 @@ Track upcoming features, planned updates, and known issues for all my Devvit app
 * v0.0.8: Manual file version bump due to Devvit CLI issue.
 * v0.0.9: Updated app triggers to address trigger issues.
 * v0.0.10: Updated assets to address app icon issue.
-* v0.0.11: Removed old configuration files, began transitioning app to new architecture.
+* v0.0.11: Began transitioning app to new architecture.
 * v0.0.12: Fixed issues with bot not responding to roll commands.
-* v0.0.13: Completed the full transition to new architecture and updated app icon.
+* v0.0.13: Completed transition to new architecture, updated app icon.
 * v0.0.14: Updated app to latest Devvit version.
 * v0.0.15: Updated app to latest Devvit version.
 * v0.0.16: Updated app to latest Devvit version.
@@ -76,7 +76,8 @@ Track upcoming features, planned updates, and known issues for all my Devvit app
 * v0.0.18: Updated support subreddit link.
 * v0.0.19: Updated app to latest Devvit version.
 * v0.0.20: Updated app to latest Devvit version.
-* v0.0.21: Updated app to latest Devvit version and added roll modifiers.
+* v0.0.21: Updated app to latest Devvit version, added roll modifiers.
 * v0.0.22: Updated app to latest Devvit version.
+* v0.0.23: Updated app to latest Devvit version, updated roll modifiers.
 
 Thanks for using **Dice Daemon**!
